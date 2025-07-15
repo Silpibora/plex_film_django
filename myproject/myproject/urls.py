@@ -29,5 +29,6 @@ urlpatterns = [
     path('movies/add_cast/', add_cast, name='add_cast'),
     path('movies/delete_movie/<int:id>/', delete_movie, name='delete_movie'),
     path('movies/showdetails/<int:id>',show_details,name='show_details'),
-    path('movies/search/',search_movie,name='search_movie')
+    path('movies/search/',search_movie,name='search_movie'),
+    path('movies/profile/<str:slug>',profile,name='profile')
 ]

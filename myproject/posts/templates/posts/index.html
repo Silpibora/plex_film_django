@@ -21,18 +21,19 @@
 
    <nav class="navbar sticky-top border-bottom border-body bg-body-tertiary" data-bs-theme="dark" >
         <div class="left">
-         <a  class="nav-link active" style="display:inline-block; color:white; margin:10px" href="/movies">plex</a> 
+         <a  class="nav-link active" style="display:inline-block; color:white; margin:10px;text-shadow: 1px 1px 1px orange, 1px 1px 2px yellow;font-size:1.2rem" href="/movies">PLEX</a> 
         <form method="post" enctype="multipart/form-data" style="display:inline-block" action="{% url 'search_movie' %}">
           {% csrf_token %}
             <input type="text" name="title" placeholder="Search movie"  >
              <button type="submit" style="color:white; background:none; border:none;"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
-         <a href="{% url 'show_movies' %}" class="nav-link active" style="display:inline-block; color:white; margin:10px">home</a>
-            <a href="{% url 'show_movies' %}" class="nav-link active" style="display:inline-block; color:white; margin:10px">discover</a>
+         <a href="{% url 'show_movies' %}" class="nav-link active" style="display:inline-block; color:white; margin:10px">Home</a>
+            <a href="{% url 'show_movies' %}" class="nav-link active" style="display:inline-block; color:white; margin:10px">Discover</a>
         </div>
         <div class="right">
             {% if user.is_authenticated %}
                 <span style="color:pink;font-size:1rem;text-shadow: 1px 1px 1px red, 1px 1px 2px white">Welcome, {{ user.first_name }} {% if user.is_superuser %} admin {% endif %}</span>
+                <a style="display:inline-block" href="{%url 'profile' user.username %}"><img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg" style="height:30px;width:30px;object-fit:cover;border-radius:1rem;msrgin:2px;border:3px solid pink;cursor:pointer"></a>
                 <a href="{% url 'logout_page' %}" class="nav-link active" style="display:inline-block; color:white; margin:10px">Logout</a>
                  {% if user.is_superuser %}
                 <a href="{% url 'add_movie' %}" class="nav-link active" style="display:inline-block; color:white; margin:10px">Add Movie</a>
@@ -40,7 +41,6 @@
             {% else %}
                 <a href="{% url 'login' %}" class="nav-link active" style="display:inline-block; color:white; margin:10px">login</a>
                <a href="{% url 'register' %}" class="nav-link active" style="display:inline-block; color:white; margin:10px">register</a>
-
             {% endif %}
 
         </div>

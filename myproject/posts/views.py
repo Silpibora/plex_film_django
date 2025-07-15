@@ -146,3 +146,9 @@ def add_cast(request):
 
     return render(request, 'forms/add_cast.html')
 
+def profile(request, slug):
+    user = User.objects.filter(username=slug).first()  # assuming slug is username
+    if user:
+        return render(request, "posts/profile.html", {'user': user})
+    else:
+        return HttpResponse("User not found")
