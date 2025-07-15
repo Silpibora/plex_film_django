@@ -1,0 +1,11 @@
+ .like-icon {
+  font-size: 24px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s;
+}
+
+.like-icon.liked {
+  color: red;
+  transform: scale(1.2);
+}

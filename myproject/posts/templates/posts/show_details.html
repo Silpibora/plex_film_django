@@ -1,0 +1,28 @@
+{% extends 'posts/index.html'%}
+{% block start %}
+
+<div class="top" >
+            <div class="backphoto" ><img src={{movie.poster2}}></img></div>
+            <div class="mainphoto" ><img src={{movie.poster1}} ></img></div>
+            <div class="info">
+                <h1>{{movie.title}}</h1>
+                <p><i  class="fa-regular fa-star"></i> {{movie.rating}} | release on {{movie.release_date}}</p>
+         <button class="btn btn-light btn-outline-secondary button-2 watchlist" style="color:black"> <i class="fa-regular fa-bookmark"></i> Add to Watchlist</button> 
+               <br></br><span class="like-icon" onclick="toggleLike()"  data-movie-id="{{ movie.id }}" style="cursor:pointer">
+               </span><br></br>
+                <div>{{movie.description}}</div>
+            </div>
+        </div>
+    <div class="bot">
+        <h2>cast</h2>
+        <div class="cast-section">
+            {% for cast in movie.cast.all  %}
+            <div class="cast-card cast-photo">
+                <img src="{{cast.cast_image}}">
+                <p style="color:white" class="names_original">{{cast.name}}</p>
+                <p style="color:white" class="names_character">{{cast.character}}</p>    
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+{%endblock%}

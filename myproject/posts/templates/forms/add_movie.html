@@ -1,0 +1,73 @@
+{% extends 'posts/index.html'%}
+{% block start %}
+ 
+<div class="container mt-5 offset-3 col-6 " >
+<form style=" box-shadow: 0px 0px 15px gray !important;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;" method="post">
+    {% csrf_token %}
+  <h1>add movie</h1>
+   
+     <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">title</label>
+    <input type="text" class="form-control" name="title" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+ 
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">description</label>
+    <input type="text" class="form-control" name="description" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">release_date</label>
+    <input type="date" class="form-control" name="release_date" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">rating</label>
+    <input type="number" class="form-control" name="rating" id="exampleInputPassword1" step="0.1">
+  </div>
+  <div class="mb-3 ">
+       <label>Poster 1: </label><input type="file" name="poster1"><br><br>
+       <label>Poster 2: </label><input type="file" name="poster2"><br>
+  </div>
+  <div id="cast-container">
+   
+     <div class="cast-group" name='cast'>
+       <hr>
+           <input type="text" name="name" placeholder="Enter cast name">
+           <input type="text" name="character" placeholder="Enter character name">
+           <input type="file" name="cast_image" placeholder="Upload cast image">
+        <br>
+        <br>
+        <button type="button" class="btn btn-dark" style=" border-radius:2rem; font-size:16px" onclick="this.parentElement.remove()">Remove</button>
+        <hr>
+      </div>
+    </div>
+     
+     <br>
+  <button type="button" onclick="addCastField()" class="btn btn-dark" style=" border-radius:2rem; font-size:16px"> Add Cast member</button><br><br> 
+    <input type="submit" class="btn btn-dark" style="background-color:green;padding:0.5rem 3rem"value="Submit">
+</form>
+</div>
+<script>
+    function addCastField() {
+      const container = document.getElementById('cast-container');
+
+      const div = document.createElement('div');
+      div.className = 'cast-group';
+      div.innerHTML = `
+      <br>
+       <hr>
+        <input type="text" name="name" placeholder="Enter cast name">
+        <input type="text" name="character" placeholder="Enter character name">
+        <input type="file" name="cast_image" placeholder="Upload cast image">
+        <br><br>
+        <button type="button" class="btn btn-dark" onclick="this.parentElement.remove()">Remove</button>
+        <hr>
+      `;
+      container.appendChild(div);
+    }
+  </script>
+
+{% endblock %}

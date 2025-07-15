@@ -1,0 +1,21 @@
+{% extends 'posts/index.html'%}
+{% load static %}
+{% block start %}
+ <div class="main">
+    {% for movie in movies %}
+      
+    <div class="card">
+         <a href="{% url 'show_details' movie.id%}" >  
+            <img src="{{ movie.poster1 }}" alt="{{ movie.title }}" style="width:100%">
+            <p class="title">{{ movie.title }}</p>
+          </a>   
+           
+             {% if user.is_superuser %}
+            <a href="{% url 'delete_movie' movie.id %}" class="btn btn-danger" style="padding:0.5rem;transform:scale(0.8);">Delete</a>
+           {% endif %}
+          
+        </div>
+   
+    {% endfor %}
+   
+{% endblock %}

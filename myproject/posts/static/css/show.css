@@ -1,0 +1,172 @@
+.top {
+    display: grid;
+    grid-template-columns: repeat(10, 10%);
+    grid-template-rows: repeat(5, 20%);
+    height: 100vh;
+    width: 100%;
+    font-family: sans-serif;
+}
+
+.backphoto {
+    grid-column: 1/11;
+    grid-row: 1/6;
+
+}
+
+.backphoto img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.2;
+}
+
+
+.mainphoto {
+    grid-column: 2/5;
+    grid-row: 2/6;
+    z-index: 1;
+}
+
+.mainphoto img {
+    object-fit: cover;
+    height: 25rem;
+    width: 16rem;
+    border-radius: 1rem;
+    z-index: 1;
+    box-shadow: 0 0 10px 3px black;
+}
+
+.info {
+    grid-column: 5/8;
+    grid-row: 2/6;
+    z-index: 1;
+    color: white
+}
+
+.info p {
+    font-weight: 800;
+}
+
+.info div {
+    height: 8rem;
+    overflow: scroll;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: none;
+    height: 3rem;
+    border-radius: 2rem;
+    padding: 1rem;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: rgb(145, 141, 141);
+}
+
+@media only screen and (max-width:1000px){
+    .mainphoto{
+        grid-column: 2/5;
+    }
+    .info{
+        grid-column: 6/10;
+    }
+}
+@media only screen and (max-width:700px){
+    .mainphoto {
+        transform: scale(0.8);
+        grid-column:4/8;
+        grid-row:1/4;
+    }
+    .info{
+        grid-column:1/11;
+        transform: scale(0.8);
+        grid-row:4/6;
+         
+    }
+    .info p{
+         display: inline-block;
+         margin-right:2rem;
+    }
+    
+    .info div{
+        height:4.5rem;
+
+    }
+}
+@media only screen and (max-width:450px){
+    .mainphoto {
+        
+        grid-column:3/7;
+        grid-row:1/4;
+    }
+}
+
+.bot
+{ width: 100%;
+  height:16rem;
+  background-color: rgb(56, 56, 54);
+  box-shadow: 0 100px 1000px 1000px rgb(56, 56, 54) ;
+  z-index: 0;
+}
+         .bot h2{
+          text-transform: capitalize;
+          font-weight: 700;
+          margin-left:15px;
+          margin-top:5px;
+          font-size:1.4rem;
+         }
+         .cast-section
+         { display: flex;
+           flex-direction: column;
+           flex-wrap: wrap;
+           overflow: scroll;
+           width: 100%;
+           height: 12.5rem;
+           z-index:0;
+           overflow-y: hidden;
+         }
+         
+         .cast-card
+         { width: 7rem;
+           height: 7rem;
+           margin:0.5em;
+           z-index:0;
+         }
+         
+         .cast-card img{
+             background-image:url("https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg") ;
+             background-size: cover;
+             height:100%;
+             width:100%;
+             z-index:1;
+         }
+         
+         .cast-photo img:hover{
+          opacity:0.5;
+          cursor:pointer;
+          transform: scale(1.1);
+         }
+
+         .cast-photo img
+         {   border-radius:5rem;
+             object-fit: cover;
+             box-shadow: 0 1px 10px 1px black,1px 0 5px 1px white;
+         }
+         .names_original{
+          font-size: 12px;
+          margin: 1px;
+          
+         }
+         .names_character{
+          font-size: 10px;;
+          margin: 1px;
+          opacity: 0.7;
+        
+         }
+
+
+      

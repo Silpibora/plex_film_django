@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/show.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <linkrel="stylesheet" href="{% static 'css/liked.css'%}">
+    <title>movie</title>
+</head>
+<body>
+    
+
+
+
+
+   <nav class="navbar sticky-top border-bottom border-body bg-body-tertiary" data-bs-theme="dark" >
+        <div class="left">
+         <a  class="nav-link active" style="display:inline-block; color:white; margin:10px" href="/movies">plex</a> 
+        <form method="post" enctype="multipart/form-data" style="display:inline-block" action="{% url 'search_movie' %}">
+          {% csrf_token %}
+            <input type="text" name="title" placeholder="Search movie"  >
+             <button type="submit" style="color:white; background:none; border:none;"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+         <a href="{% url 'show_movies' %}" class="nav-link active" style="display:inline-block; color:white; margin:10px">home</a>
+            <a href="{% url 'show_movies' %}" class="nav-link active" style="display:inline-block; color:white; margin:10px">discover</a>
+        </div>
+        <div class="right">
+            {% if user.is_authenticated %}
+                <span style="color:pink;font-size:1rem;text-shadow: 1px 1px 1px red, 1px 1px 2px white">Welcome, {{ user.first_name }} {% if user.is_superuser %} admin {% endif %}</span>
+                <a href="{% url 'logout_page' %}" class="nav-link active" style="display:inline-block; color:white; margin:10px">Logout</a>
+                 {% if user.is_superuser %}
+                <a href="{% url 'add_movie' %}" class="nav-link active" style="display:inline-block; color:white; margin:10px">Add Movie</a>
+                 {% endif %}
+            {% else %}
+                <a href="{% url 'login' %}" class="nav-link active" style="display:inline-block; color:white; margin:10px">login</a>
+               <a href="{% url 'register' %}" class="nav-link active" style="display:inline-block; color:white; margin:10px">register</a>
+
+            {% endif %}
+
+        </div>
+   </nav>
+
+    {% block start%}
+
+    {% endblock %}
+    
+    <footer class="footer">
+        <div class="footer-items">
+            <div class="f-info-socials">
+                <i class="fa-brands fa-square-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-linkedin"></i>
+            </div>
+            <div class="f-info-copywright"> <p>&copy; Plex Pvt. Limited</p></div> 
+            <div class="f-info-links">
+                 <a href="/privacy">privacy</a>
+                 <a href="/terms">terms</a>
+            </div> 
+       
+        </div>
+    </footer> 
+
+    <script src="{% static 'javascript/script.js' %}"></script>
+</body>
+</html>
